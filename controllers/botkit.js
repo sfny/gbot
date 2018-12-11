@@ -2,7 +2,7 @@
 
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit');
-var database = require('../config/database')({mongoUri: process.env.MONGO})
+var database = require('../config/database')({mongoUri: process.env.MONGO_URI})
 var request = require('request')
 var Conversations = require('../skills/conversations.js')
 if (!process.env.SLACK_ID || !process.env.SLACK_SECRET || !process.env.PORT) {

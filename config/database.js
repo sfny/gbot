@@ -55,19 +55,20 @@
 //         };
 //     };
 //
-
-
 var db = require('monk');
-/**
+var database = require('../config/database');
+var config = require('dotenv').load();
+/*
  * botkit-storage-mongo - MongoDB driver for Botkit
  *
  * @param  {Object} config
  * @return {Object}
  */
 module.exports = function(config) {
+    var config = {mongoUri: process.env.MONGO_URI}
 
     if (!config || !config.mongoUri)
-        throw new Error('Need to provide mongo address.');
+        throw new Error('Need to provide mongo address, maybe.');
 
     var Teams = db(config.mongoUri).get('teams'),
         Users = db(config.mongoUri).get('users'),

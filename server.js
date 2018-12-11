@@ -2,14 +2,16 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var http           = require('http').Server(app);
-var dotenv         = require('dotenv');
+var dotenv         = require('dotenv').config();
 
 // configuration ===========================================
 
 //load environment variables,
 //either from .env files (development),
 //heroku environment in production, etc...
-dotenv.load();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
 
 // public folder for images, css,...
 app.use(express.static(__dirname + '/public'))
@@ -25,10 +27,10 @@ app.set('view engine', 'ejs');
 require('./routes/routes')(app);
 
 //port for Heroku
-app.set('port', (process.env.PORT));
+//app.set('port', (process.env.PORT));
 
 //botkit (apres port)
-require('./controllers/botkit')
+require('./controllers/botkit');
 
 
 //START ===================================================

@@ -1,5 +1,4 @@
-var Request          = require('request')
-var slack = require('../controllers/botkit')
+var Request = require('request')
 // frontend routes =========================================================
 module.exports = function(app) {
 
