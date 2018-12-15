@@ -9,6 +9,8 @@ var dotenv         = require('dotenv').config();
 //load environment variables,
 //either from .env files (development),
 //heroku environment in production, etc...
+
+// I dont know if this is doing anything
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load();
 }
@@ -27,7 +29,7 @@ app.set('view engine', 'ejs');
 require('./routes/routes')(app);
 
 //port for Heroku
-//app.set('port', (process.env.PORT));
+app.set('port', (process.env.PORT));
 
 //botkit (apres port)
 require('./controllers/botkit');

@@ -70,6 +70,7 @@ module.exports = function(config) {
     if (!config || !config.mongoUri)
         throw new Error('Need to provide mongo address, maybe.');
 
+
     var Teams = db(config.mongoUri).get('teams'),
         Users = db(config.mongoUri).get('users'),
         Channels = db(config.mongoUri).get('channels');
